@@ -24,6 +24,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var userInput = '';
   var answer = '';
+  int counter = 0;
 
 // Array of button
   final List<String> buttons = [
@@ -110,11 +111,19 @@ class _HomePageState extends State<HomePage> {
                     }
 
                     // +/- button
-                    else if (index == 2) {
+                else if (index == 2) {
                       return CustomButton(
                         buttonTapped: () {
                           setState(() {
-                            userInput = '-'+ userInput;
+                            if(counter%2==0)
+                            {
+                              userInput = '-' + userInput;
+                            }
+                            else
+                            {
+                              userInput.replaceAll("-","");
+                            }
+                            counter++;
                           });
 
                         },
